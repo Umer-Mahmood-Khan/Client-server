@@ -1,0 +1,60 @@
+Included Libraries
+<stdio.h>: Standard input-output library for basic functions.
+<sys/socket.h>: Provides socket functions.
+<arpa/inet.h>: Functions for handling internet addresses.
+<unistd.h>: Contains functions for system calls like read, write, and close.
+<sys/wait.h>: Provides macros related to process termination.
+<errno.h>: Defines error codes returned by system calls.
+<sys/stat.h>: Defines the structure of file status.
+<stdlib.h>: Standard library functions like malloc, exit, etc.
+<string.h>: Functions for string manipulation.
+<time.h>: Functions for handling time.
+<dirent.h>: Defines the structure for directory entries.
+<sys/types.h>: Defines data types used in system calls.
+Constants
+PORT 8080: Main server port number.
+BUFSIZE 1024: Buffer size.
+MIRROR_PORT 7001: Port number for a mirror server.
+Function Descriptions
+npsd_explore_directory
+This function searches for a file in a given directory and its subdirectories.
+
+Opens a directory and reads entries.
+Checks if each entry is a directory or a regular file.
+If a regular file matches the target filename, it retrieves file metadata (like creation time and permissions) and stores this information in npsd_commd.
+npsd_date_input_valid
+This function checks if a date string is in the valid format YYYY-MM-DD.
+
+Uses sscanf to parse the date and checks if the components are within valid ranges.
+check_valid_filelist
+This function checks if a given file list is not empty.
+
+npsd_valid_exten
+This function checks if a given extensions list is not empty.
+
+processclient
+This function processes client requests.
+
+Reads commands from the client and parses them.
+Handles commands like getfn, getfz, getfdb, getfda, fgets, getft, and quitc.
+Executes the command and sends the response back to the client.
+getfn: Finds a file by name.
+getfz: Finds files within a specified size range.
+getfdb: Finds files modified before a specified date.
+getfda: Finds files modified after a specified date.
+fgets: Finds specified files.
+getft: Finds files with specified extensions.
+quitc: Closes the connection.
+npsd_redirecting_to_mirror
+This function redirects a client to the mirror server by sending the mirror server's port number to the client.
+
+main
+This function sets up the server.
+
+Creates a socket.
+Binds it to the specified port.
+Listens for incoming connections.
+Accepts client connections and forks a new process to handle each client using processclient.
+Main Loop
+The server runs an infinite loop, accepting and processing client connections.
+When a client connects, it is handled in a new process using processclient.

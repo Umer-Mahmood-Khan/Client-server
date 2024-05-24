@@ -1,0 +1,7 @@
+getfn: Searches for a file by name and returns its details.
+getfz: Finds files within a specific size range and compresses them into a tar.gz file.
+getfdb: Retrieves files modified before a specified date and compresses them into a tar.gz file.
+getfda: Retrieves files modified after a specified date and compresses them into a tar.gz file.
+fgets: Searches for specified file names and compresses them into a tar.gz file.
+getft: Finds files with specific extensions and compresses them into a tar.gz file.
+quitc: Closes the client connection.

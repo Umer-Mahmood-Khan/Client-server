@@ -1,0 +1,33 @@
+Variables:
+sockfd: Socket file descriptor.
+serv_addr, mirror_addr: Structures for server and mirror server addresses.
+buff, command, gf: Buffers for storing input, commands, and temporary strings.
+valid_syntax: Flag for command syntax validation.
+
+Socket Creation: Creates a TCP socket.
+Server Address Setup: Initializes the server address structure and converts IP address from text to binary.
+Connection: Connects to the server using the specified address and port.
+
+Loop Start: Enters an infinite loop to process user commands.
+Buffers Initialization: Clears buffers for new input.
+Input Reading: Reads input from the user.
+Command Parsing: Tokenizes the input to identify the command and its parameters.
+Command Handling
+The code handles different commands based on the first token:
+
+getfn: Fetches a file by name.
+getfz: Fetches files within a specified size range, optionally unzipping them.
+getfdb: Fetches files created before a specified date.
+getfda: Fetches files created after a specified date.
+fgets: Fetches files with specific extensions.
+getft: Fetches files with multiple specified extensions.
+
+
+Mirror Server Connection: If the server responds with "7001", it indicates the client should connect to a mirror server.
+Command Exit Handling: If the command is "quitc", breaks the loop and closes the connection.
+Summary
+Initialization: Sets up the socket and server connection.
+Command Loop: Continuously reads and processes user commands.
+Command Parsing: Validates and formats commands.
+Server Interaction: Sends commands and handles responses, including reconnecting to a mirror server if needed.
+Termination: Gracefully closes the connection when the user quits.
